@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:57:23 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/28 18:57:25 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/01/31 18:54:11 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,21 @@ int		count_nb(char *str)
 	int i;
 
 	i = 0;
-	tabstr = ft_strsplit(str, ' ');
+	if (!(tabstr = ft_strsplit(str, ' ')))
+		return (-1);
 	while (tabstr[i] != 0)
+	{
+		free(tabstr[i]);
 		i++;
+	}
+	free(tabstr);
 	return (i);
 }
-// Mini 2 ligne et / ou 2 colonne ? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ?
+
+/*
+** Mini 2 ligne et / ou 2 colonne ? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ?
+*/
+
 int		valid_nb(char *str)
 {
 	static int	c = -8;
@@ -61,21 +70,27 @@ int		valid_file(char *argv)
 	char	*str;
 	int vi;
 	int vn;
+
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr("Open Fail.\n");
 		return (1);
 	}
-	while ((g = get_next_line(fd, &str)) == 1)
+	while ((g = get_next_line(fd, &str)) != 0)
 	{
+		if (g < 0)
+		{
+			ft_strdel(&str);
+			return (1);
+		}
 		vi = valid_int(str);
 		vn = valid_nb(str);
 		if (vi == 1) // fonction qui vérifie que la str comporte que des chifre ou space!
 			return (1);
 		if (vn == 1)// fonction qui vérifie que toute les ligne on le meme combre de int
 			return (1);
-
+		free(str);
 		// ft_putnbr(vi);
 		// ft_putchar(' ');
 		// ft_putnbr(vn);

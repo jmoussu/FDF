@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:54:54 by jmoussu           #+#    #+#              #
-#    Updated: 2019/01/29 15:56:35 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/01/31 17:49:54 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC =	srcs/main.c \
 		srcs/read.c \
 		srcs/valid_file.c \
 		srcs/parsing.c \
-		srcs/display_list.c
+		srcs/display_list.c \
+		srcs/make_link.c \
+		srcs/freelist.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,11 +41,11 @@ $(NAME): $(OBJ)
 
 onlyfdf:
 	@gcc -o $(NAME) $(CFLAGS) -I minilibx_macos $(SRC) libft/libft.a -L minilibx_macos -lmlx -framework OpenGL -framework Appkit
-	@echo fdf ${GREEN_OK}
+	@echo onlyfdf ${GREEN_OK}
 
 onlyfdfdebug:
-	@gcc -o $(NAME) $(CFLAGS) -g -I minilibx_macos $(SRC) libft/libft.a -L minilibx_macos -lmlx -framework OpenGL -framework Appkit
-	@echo fdf ${GREEN_OK}
+	@gcc -o $(NAME) $(CFLAGS) -g -fsanitize=address -I minilibx_macos $(SRC) libft/libft.a -L minilibx_macos -lmlx -framework OpenGL -framework Appkit
+	@echo onlyfdf debug ${GREEN_OK}
 
 onlylibft:
 	@cd libft && make

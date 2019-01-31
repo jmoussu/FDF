@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blocnote.c                                         :+:      :+:    :+:   */
+/*   freelist.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/29 16:12:58 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/30 20:22:36 by jmoussu          ###   ########.fr       */
+/*   Created: 2019/01/30 20:06:20 by jmoussu           #+#    #+#             */
+/*   Updated: 2019/01/30 20:19:18 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// MISSION PARSSING ET AFFICHAGE TERMINAL !
-// Faire les LINK LH et LV 
-// AFFICHER LES LINK LH et LV
+#include "fdf.h"
 
-// AVANT LE GRAPGISME NORME TOUT ET UNLEAK TOUT !!!!
+void	freelist(t_p *list)
+{
+	t_p *tmp;
 
-// REFAIRE LIGNE.C UN JOURS
-rajouter avant le return du main 
-`
-while 1 ;
-`
-
-./fdf map &
-leaks $(pgrep fdf)
-pkill fdf
+	while (list)
+	{
+		tmp = list->next;
+		free(list);
+		list = tmp;
+	}
+}
