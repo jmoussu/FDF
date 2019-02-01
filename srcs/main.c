@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/01 16:44:01 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 22:19:33 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int		all_error(int argc, char **argv, char *str, t_p **map)
 {
 	if (check_params(argc) == -1)
 		return (usage());
-	if (!(str = read_file(argv[1])))
-		return (error());
 	if (valid_file(argv[1]) == 1)
+		return (error());
+	if (!(str = read_file(argv[1])))
 		return (error());
 	else
 		ft_putstr("valid file \n");
@@ -46,7 +46,8 @@ int		main(int argc, char **argv)
 	if (all_error(argc, argv, str, &map))
 		return (1);
 	display_list(map);
-	// freelist(map); // INUTILE LEAKS POURQUOI ?
-	while (1);
+	mlx_main();
+	freelist(map); // INUTILE LEAKS POURQUOI ? (avant d'use mlx aussi)
+	// while (1); //Leaks Usage
 	return (0);
 }

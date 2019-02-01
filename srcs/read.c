@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:56:47 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/01 16:39:03 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 19:02:21 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*read_file(char *arg)
 	{
 		if (retgnl < 0)
 		{
+			ft_putstr("ALO ALO ALO ???\n ALO ALO ALO ?? \n");
 			free(str);
 			return (NULL);
 		}

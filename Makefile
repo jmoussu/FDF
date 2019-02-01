@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:54:54 by jmoussu           #+#    #+#              #
-#    Updated: 2019/02/01 14:47:01 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/02/01 18:43:08 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC =	srcs/main.c \
 		srcs/parsing.c \
 		srcs/display_list.c \
 		srcs/make_link.c \
-		srcs/freelist.c
+		srcs/freelist.c \
+		srcs/mlx_main.c
 
 OBJ = $(SRC:.c=.o)
 

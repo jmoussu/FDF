@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/01 16:35:00 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 21:20:12 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct	s_range_parsing
 	t_p			*nlm;
 }				t_rp;
 
-typedef struct	s_v
+typedef struct	s_var_mlx
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -66,13 +66,13 @@ typedef struct	s_v
 	int				zy2;
 	int				zx3;
 	int				zy3;
-}				t_v;
+}				t_mv;
 
-void			linebl(t_coord p1, t_coord p2, t_v v);
-void			linebh(t_coord p1, t_coord p2, t_v v);
-void			linehl(t_coord p1, t_coord p2, t_v v);
-void			linehh(t_coord p1, t_coord p2, t_v v);
-void			line(t_coord p1, t_coord p2, t_v v);
+void			lignebl(t_coord p1, t_coord p2, t_mv v);
+void			lignebh(t_coord p1, t_coord p2, t_mv v);
+void			lignehl(t_coord p1, t_coord p2, t_mv v);
+void			lignehh(t_coord p1, t_coord p2, t_mv v);
+void			ligne(t_coord p1, t_coord p2, t_mv v);
 int				usage(void);
 int				error(void);
 char			*read_file(char *arg);
@@ -83,5 +83,6 @@ void			display_p(t_p *list);
 int				linkall(t_p *list);
 void			freelist(t_p *list);
 int				open_close_12(int option, int *fd, char *argv);
+int				mlx_main();
 
 #endif
