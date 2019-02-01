@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 15:27:15 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/31 14:57:44 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 16:16:35 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ t_p		*link_v(t_p *list)
 	return (NULL);
 }
 
-void	linkall(t_p *list)
+int		linkall(t_p *list)
 {
+	if (list == NULL)
+		return (1);
 	while (list->next != NULL)
 	{
 		list->link_h = link_h(list);
@@ -62,4 +64,5 @@ void	linkall(t_p *list)
 	}
 	while (list->prev != NULL)
 		list = list->prev;
+	return (0);
 }

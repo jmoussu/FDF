@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/31 18:15:44 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 16:44:01 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ int		check_params(char argc)
 	return (0);
 }
 
-int		all_error(int argc, char **argv, char *str)
+int		all_error(int argc, char **argv, char *str, t_p **map)
 {
 	if (check_params(argc) == -1)
 		return (usage());
-	// (void)argv;
-	// (void)str;
 	if (!(str = read_file(argv[1])))
 		return (error());
 	if (valid_file(argv[1]) == 1)
 		return (error());
 	else
 		ft_putstr("valid file \n");
+	if ((*map = parsing(argv[1])) == NULL)
+		return (error());
+	if ((linkall(*map)))
+		return (error());
 	return (0);
 }
 
@@ -40,13 +42,11 @@ int		main(int argc, char **argv)
 	t_p		*map;
 
 	str = NULL;
-	// (void) argc;
-	if (all_error(argc, argv, str))
-		return (-1);
-	map = parsing(argv[1]);
-	linkall(map);
+	map = NULL;
+	if (all_error(argc, argv, str, &map))
+		return (1);
 	display_list(map);
-	freelist(map); // INUTILE LEAKS POURQUOI ?
+	// freelist(map); // INUTILE LEAKS POURQUOI ?
 	while (1);
 	return (0);
 }

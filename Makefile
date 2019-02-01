@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:54:54 by jmoussu           #+#    #+#              #
-#    Updated: 2019/01/31 17:49:54 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/02/01 14:47:01 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ onlyfdf:
 	@echo onlyfdf ${GREEN_OK}
 
 onlyfdfdebug:
-	@gcc -o $(NAME) $(CFLAGS) -g -fsanitize=address -I minilibx_macos $(SRC) libft/libft.a -L minilibx_macos -lmlx -framework OpenGL -framework Appkit
+	@gcc -o $(NAME) $(CFLAGS) -g -I minilibx_macos $(SRC) libft/libft.a -L minilibx_macos -lmlx -framework OpenGL -framework Appkit
 	@echo onlyfdf debug ${GREEN_OK}
 
 onlylibft:

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/31 15:27:45 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 16:35:00 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ typedef struct	s_point
 
 typedef struct	s_range_parsing
 {
-	int fd;
-	int x;
-	int y;
-	int g;
-	char *str;
-	char **tabstr;
-	t_p *ll; // Linked list
-	t_p *nlm; // New elems
+	int			fd;
+	int			x;
+	int			y;
+	int			g;
+	char		*str;
+	char		**tabstr;
+	t_p			*ll;
+	t_p			*nlm;
 }				t_rp;
 
 typedef struct	s_v
@@ -80,7 +80,8 @@ int				valid_file(char *argv);
 t_p				*parsing(char *argv);
 void			display_list(t_p *list);
 void			display_p(t_p *list);
-void			linkall(t_p *list);
+int				linkall(t_p *list);
 void			freelist(t_p *list);
+int				open_close_12(int option, int *fd, char *argv);
 
 #endif
