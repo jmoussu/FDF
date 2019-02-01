@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjaniec <jjaniec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/31 18:15:44 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/01 21:15:41 by jjaniec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		main(int argc, char **argv)
 	map = parsing(argv[1]);
 	linkall(map);
 	display_list(map);
-	freelist(map); // INUTILE LEAKS POURQUOI ?
+	freelist(map); // INUTILE LEAKS POURQUOI ? // t pa bo lol
 	while (1);
 	return (0);
 }
