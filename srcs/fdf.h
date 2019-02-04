@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/01 21:20:12 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/04 18:56:16 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,21 @@ typedef struct	s_var_mlx
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
-	t_coord			pos;
-	int				t;
-	int				zx1;
-	int				zy1;
-	int				zx2;
-	int				zy2;
-	int				zx3;
-	int				zy3;
+	// t_coord			pos;
+	// int				t;
+	// int				zx1;
+	// int				zy1;
+	// int				zx2;
+	// int				zy2;
+	// int				zx3;
+	// int				zy3;
 }				t_mv;
 
-void			lignebl(t_coord p1, t_coord p2, t_mv v);
-void			lignebh(t_coord p1, t_coord p2, t_mv v);
-void			lignehl(t_coord p1, t_coord p2, t_mv v);
-void			lignehh(t_coord p1, t_coord p2, t_mv v);
-void			ligne(t_coord p1, t_coord p2, t_mv v);
+void			linebl(t_coord p1, t_coord p2, t_mv v);
+void			linebh(t_coord p1, t_coord p2, t_mv v);
+void			linehl(t_coord p1, t_coord p2, t_mv v);
+void			linehh(t_coord p1, t_coord p2, t_mv v);
+void			line(t_coord p1, t_coord p2, t_mv v);
 int				usage(void);
 int				error(void);
 char			*read_file(char *arg);
@@ -84,5 +84,6 @@ int				linkall(t_p *list);
 void			freelist(t_p *list);
 int				open_close_12(int option, int *fd, char *argv);
 int				mlx_main();
+int				check_params(char argc);
 
 #endif

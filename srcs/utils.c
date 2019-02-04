@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 19:05:08 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/28 19:05:10 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/04 14:49:32 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,11 @@ int		error(void)
 {
 	ft_putstr("error\n");
 	return (-1);
+}
+
+int		check_params(char argc)
+{
+	if (argc != 2)
+		return (-1);
+	return (0);
 }

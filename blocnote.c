@@ -6,14 +6,17 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:12:58 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/01 22:21:41 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/04 19:00:47 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// FAIRE Dealkey deal mouse organisation mlx void* etc ...
-//FAIT PAR JJANIEC MERCI !
+
 // REFAIRE LIGNE.C
+// linebl fait
+
 // Pourquoi free list est inutile ?
+// loop hook
+// iamge
 
 
 /*
