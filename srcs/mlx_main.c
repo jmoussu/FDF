@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 18:26:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/04 18:59:11 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/05 19:34:00 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	deal_key(int key, void *param)
 	v = (t_mv *)param;
 	if (key == 53)
 		exit(0);
-	if (key == 1)
-		mlx_pixel_put(v->mlx_ptr, v->win_ptr, 250, 240, GREEN);
+	if (key == 8)
+		mlx_clear_window(v->mlx_ptr, v->win_ptr);
 	ft_putnbr(key);
 	ft_putchar('\n');
 	return (0);
@@ -27,12 +27,9 @@ int	deal_key(int key, void *param)
 
 int	deal_mouse(int key, int x, int y, void *param)
 {
-	t_coord p1;
-	t_coord p2;
-	p1.x = 20;
-	p1.y = 200;
-	p2.x = 200;
-	p2.y = 499;
+	static t_coord		p1;
+	static t_coord		p2;
+
 	t_mv	*v;
 	v = (t_mv *)param;
 	ft_putnbr(key);
@@ -41,7 +38,17 @@ int	deal_mouse(int key, int x, int y, void *param)
 	ft_putchar('\t');
 	ft_putnbr(y);
 	ft_putchar('\n');
-	line(p1, p2, *v);
+	if (key == 1)
+	{
+		p1.x = x;
+		p1.y = y;
+	}
+	if (key >= 2)
+	{
+		p2.x = x;
+		p2.y = y;
+		line(p1, p2, *v);
+	}
 	return (0);
 }
 
