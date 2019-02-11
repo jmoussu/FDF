@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 19:10:58 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/05 19:30:00 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/07 14:42:54 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,44 @@ void	line(t_coord p1, t_coord p2, t_mv v)
 	int dy;
 
 	if (p1.x > p2.x)
+	{
+		pt = p1;
+		p1 = p2;
+		p2 = pt;
+	}
+	dx = ABS(p2.x - p1.x);
+	dy = ABS(p2.y - p1.y);
+
+	if (p1.y > p2.y) // Le haut
+	{
+		if (dx > dy)
+			linehl(p1, p2, v);
+		else
+			linehh(p1,p2, v);
+	}
+	else
+	{
+		if (dx > dy)
+			linebl(p1, p2, v);
+		else
+			linebh(p1,p2, v);
+	}
+
+}
+
+void	line4(int x1, int y1, int x2, int y2, t_mv v)
+{
+	t_coord p1;
+	t_coord p2;
+	t_coord pt;
+	int dx;
+	int dy;
+
+	p1.x = x1;
+	p1.y = y1;
+	p2.x = x2;
+	p2.y = y2;
+	if (x1 > x2)
 	{
 		pt = p1;
 		p1 = p2;

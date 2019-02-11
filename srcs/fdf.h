@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/04 18:56:16 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/11 18:10:26 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,15 @@ typedef struct	s_range_parsing
 
 typedef struct	s_var_mlx
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	// t_coord			pos;
-	// int				t;
-	// int				zx1;
+	void				*mlx_ptr;
+	void				*win_ptr;
+	t_p					*p;
+	int					h;
+	float				pl;
+	int					bx;
+	int					by;
+	float				z;
+	struct s_var_mlx	*start;
 	// int				zy1;
 	// int				zx2;
 	// int				zy2;
@@ -73,6 +77,7 @@ void			linebh(t_coord p1, t_coord p2, t_mv v);
 void			linehl(t_coord p1, t_coord p2, t_mv v);
 void			linehh(t_coord p1, t_coord p2, t_mv v);
 void			line(t_coord p1, t_coord p2, t_mv v);
+void			line4(int x1, int y1, int x2, int y2, t_mv v);
 int				usage(void);
 int				error(void);
 char			*read_file(char *arg);
@@ -83,7 +88,10 @@ void			display_p(t_p *list);
 int				linkall(t_p *list);
 void			freelist(t_p *list);
 int				open_close_12(int option, int *fd, char *argv);
-int				mlx_main();
+int				mlx_main(t_p *map);
 int				check_params(char argc);
+int				x(t_p *stru, t_mv m);
+int				y(t_p *stru, t_mv m);
+t_coord			pa(t_p *stru, t_mv m);
 
 #endif
