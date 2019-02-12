@@ -6,26 +6,62 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 18:26:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/11 18:43:27 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/12 11:54:17 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// void	mapi(t_p* p, t_mv m)
+// {
+// 	while (p != NULL)
+// 	{
+// 		//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
+// 		if (p->link_h != NULL)
+// 		{
+// 			line(pai(p, m), pai(p->link_h, m), m);
+// 		}
+// 		if (p->link_v != NULL)
+// 		{
+// 			line(pai(p, m), pai(p->link_v, m), m);
+// 		}
+// 		p = p->next;
+// 	}
+// }
+
 void	map(t_p* p, t_mv m)
 {
-	while (p != NULL)
+	if (m.i == 0)
 	{
-		//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
-		if (p->link_h != NULL)
+		while (p != NULL)
 		{
-			line(pa(p, m), pa(p->link_h, m), m);
+			//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
+			if (p->link_h != NULL)
+			{
+				line(pa(p, m), pa(p->link_h, m), m);
+			}
+			if (p->link_v != NULL)
+			{
+				line(pa(p, m), pa(p->link_v, m), m);
+			}
+			p = p->next;
 		}
-		if (p->link_v != NULL)
+	}
+	else 
+	{
+		while (p != NULL)
 		{
-			line(pa(p, m), pa(p->link_v, m), m);
+			//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
+			if (p->link_h != NULL)
+			{
+				line(pai(p, m), pai(p->link_h, m), m);
+			}
+			if (p->link_v != NULL)
+			{
+				line(pai(p, m), pai(p->link_v, m), m);
+			}
+			p = p->next;
 		}
-		p = p->next;
 	}
 }
 
@@ -48,6 +84,16 @@ int	deal_key(int key, void *param)
 		v->z = v->start->z;
 		map(v->p, *v);
 	}
+	if (key == 34) // I
+	{
+		ft_putstr("ISO");
+		if (v->i == 1)
+			v->i = 0;
+		else
+			v->i = 1;
+		mlx_clear_window(v->mlx_ptr, v->win_ptr);
+		map(v->p, *v);
+	}
 	if (key == 69) // +
 	{
 		ft_putstr("+");
@@ -66,28 +112,28 @@ int	deal_key(int key, void *param)
 	{
 		ft_putstr("->");
 		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->bx = v->bx + 500;
+		v->bx = v->bx + 300;
 		map(v->p, *v);
 	}
 		if (key == 123) // <-
 	{
 		ft_putstr("<-");
 		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->bx = v->bx - 500;
+		v->bx = v->bx - 300;
 		map(v->p, *v);
 	}
 		if (key == 126) // haut
 	{
 		ft_putstr("^\n|\n");
 		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->by = v->by - 500;
+		v->by = v->by - 300;
 		map(v->p, *v);
 	}
 	if (key == 125) // bas
 	{
 		ft_putstr("|\nv\n");
 		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->by = v->by + 500;
+		v->by = v->by + 300;
 		map(v->p, *v);
 	}
 	//ZOOM
@@ -152,6 +198,7 @@ int	mlx_main(t_p *p)
 	v.h = 5; // hauteur
 	v.pl = 1.35; // plat
 	v.z = 1;
+	v.i = 1;
 	start = v;
 	v.start = &start;
 	map(v.p, v);

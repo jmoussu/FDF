@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   maths_iso.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 19:05:08 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/12 12:06:50 by jmoussu          ###   ########.fr       */
+/*   Created: 2019/02/12 10:38:47 by jmoussu           #+#    #+#             */
+/*   Updated: 2019/02/12 11:23:07 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		usage(void)
+int		xi(t_p *stru, t_mv m)
 {
-	ft_putstr("usage: ./fdf source_file\n");
-	return (-1);
+	int x;
+	int dx; 
+
+	x = ((stru->x-stru->y)*64)+m.bx;
+	dx = x - 960;
+	x = 960 + (dx * m.z);
+	return (x);
 }
 
-int		error(void)
+int		yi(t_p *stru, t_mv m)
 {
-	ft_putstr("error\n");
-	return (-1);
+	int y;
+	int dy;
+
+	y = ((stru->y+stru->x)*32+m.by)-stru->z*m.h;
+	dy = y - 540;
+	y = 540 + (dy * m.z);
+	return (y);
 }
 
-int		check_params(char argc)
+t_coord		pai(t_p *stru, t_mv m)
 {
-	if (argc != 2)
-		return (-1);
-	return (0);
+	t_coord p;
+	p.x = xi(stru, m);
+	p.y = yi(stru, m);
+	return (p);
 }

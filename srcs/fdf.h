@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/11 18:10:26 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/12 11:47:35 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct	s_var_mlx
 	float				pl;
 	int					bx;
 	int					by;
+	int					i;
 	float				z;
 	struct s_var_mlx	*start;
 	// int				zy1;
@@ -93,5 +94,8 @@ int				check_params(char argc);
 int				x(t_p *stru, t_mv m);
 int				y(t_p *stru, t_mv m);
 t_coord			pa(t_p *stru, t_mv m);
+int				xi(t_p *stru, t_mv m);
+int				yi(t_p *stru, t_mv m);
+t_coord			pai(t_p *stru, t_mv m);
 
 #endif
