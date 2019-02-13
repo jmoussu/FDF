@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:54:54 by jmoussu           #+#    #+#              #
-#    Updated: 2019/02/12 11:16:41 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/02/12 17:02:37 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRC =	srcs/main.c \
 		srcs/freelist.c \
 		srcs/mlx_main.c \
 		srcs/maths.c \
-		srcs/maths_iso.c
+		srcs/maths_iso.c \
+		srcs/img.c \
+		srcs/ligne_img.c
 
 OBJ = $(SRC:.c=.o)
 

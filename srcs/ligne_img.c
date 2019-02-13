@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ligne.c                                            :+:      :+:    :+:   */
+/*   ligne_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 19:10:58 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/12 17:03:45 by jmoussu          ###   ########.fr       */
+/*   Created: 2019/02/12 16:09:28 by jmoussu           #+#    #+#             */
+/*   Updated: 2019/02/12 17:03:44 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	linebh(t_coord p1, t_coord p2, t_mv v)
+void	linebhi(t_coord p1, t_coord p2, t_mv v)
 {
 	int dx;
 	int dy;
@@ -24,7 +24,7 @@ void	linebh(t_coord p1, t_coord p2, t_mv v)
 	y = p1.y;
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
-	mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+	fill_pixel(v.img, x, y);
 	y = p1.y + 1;
 	cumul = dy / 2 ;
 	while (y <= p2.y)
@@ -35,12 +35,12 @@ void	linebh(t_coord p1, t_coord p2, t_mv v)
 			cumul -= dy ;
 			x += 1 ;
 		}
-		mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+		fill_pixel(v.img, x, y);
 		y++;
 	}
 }
 
-void	linebl(t_coord p1, t_coord p2, t_mv v)
+void	linebli(t_coord p1, t_coord p2, t_mv v)
 {
 	int dx;
 	int dy;
@@ -52,7 +52,7 @@ void	linebl(t_coord p1, t_coord p2, t_mv v)
 	y = p1.y;
 	dx = p2.x - p1.x;
 	dy = (p2.y - p1.y);
-	mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+	fill_pixel(v.img, x, y);
 	x = p1.x + 1; //  ? + 1 -1 et y en fonction du sence ?
 	cumul = dx / 2 ;
 	while (x <= p2.x)
@@ -63,12 +63,12 @@ void	linebl(t_coord p1, t_coord p2, t_mv v)
 			cumul -= dx ;
 			y += 1 ;
 		}
-		mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+		fill_pixel(v.img, x, y);
 		x++;
 	}
 }
 
-void	linehl(t_coord p1, t_coord p2, t_mv v)
+void	linehli(t_coord p1, t_coord p2, t_mv v)
 {
 	int dx;
 	int dy;
@@ -80,7 +80,7 @@ void	linehl(t_coord p1, t_coord p2, t_mv v)
 	y = p1.y;
 	dx = ABS(p2.x - p1.x);
 	dy = ABS(p2.y - p1.y);
-	mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+	fill_pixel(v.img, x, y);
 	x = p1.x + 1; //? + 1 -1 et y en fonction du sence ?
 	cumul = dx / 2 ;
 	while (x <= p2.x)
@@ -91,12 +91,12 @@ void	linehl(t_coord p1, t_coord p2, t_mv v)
 			cumul -= dx ;
 			y -= 1 ;
 		}
-		mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+		fill_pixel(v.img, x, y);
 		x++;
 	}
 }
 
-void	linehh(t_coord p1, t_coord p2, t_mv v)
+void	linehhi(t_coord p1, t_coord p2, t_mv v)
 {
 	int dx;
 	int dy;
@@ -108,7 +108,7 @@ void	linehh(t_coord p1, t_coord p2, t_mv v)
 	y = p1.y;
 	dx = ABS(p2.x - p1.x);
 	dy = ABS(p2.y - p1.y);
-	mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+	fill_pixel(v.img, x, y);
 	y = p1.y + 1; //? + 1 -1 et y en fonction du sence ?
 	cumul = dy / 2 ;
 	while (y >= p2.y)
@@ -119,12 +119,12 @@ void	linehh(t_coord p1, t_coord p2, t_mv v)
 			cumul -= dy ;
 			x += 1 ;
 		}
-		mlx_pixel_put(v.mlx_ptr, v.win_ptr, x, y, WHITE);
+		fill_pixel(v.img, x, y);
 		y--;
 	}
 }
 
-void	line(t_coord p1, t_coord p2, t_mv v)
+void	linei(t_coord p1, t_coord p2, t_mv v)
 {
 	t_coord pt;
 	int dx;
@@ -142,18 +142,17 @@ void	line(t_coord p1, t_coord p2, t_mv v)
 	if (p1.y > p2.y) // Le haut
 	{
 		if (dx > dy)
-			linehl(p1, p2, v);
+			linehli(p1, p2, v);
 		else
-			linehh(p1,p2, v);
+			linehhi(p1,p2, v);
 	}
 	else
 	{
 		if (dx > dy)
-			linebl(p1, p2, v);
+			linebli(p1, p2, v);
 		else
-			linebh(p1,p2, v);
+			linebhi(p1,p2, v);
 	}
-
 }
 
 // void	line4(int x1, int y1, int x2, int y2, t_mv v)
@@ -180,16 +179,16 @@ void	line(t_coord p1, t_coord p2, t_mv v)
 // 	if (p1.y > p2.y) // Le haut
 // 	{
 // 		if (dx > dy)
-// 			linehl(p1, p2, v);
+// 			linehli(p1, p2, v);
 // 		else
-// 			linehh(p1,p2, v);
+// 			linehhi(p1,p2, v);
 // 	}
 // 	else
 // 	{
 // 		if (dx > dy)
-// 			linebl(p1, p2, v);
+// 			linebli(p1, p2, v);
 // 		else
-// 			linebh(p1,p2, v);
+// 			linebhi(p1,p2, v);
 // 	}
 
 // }

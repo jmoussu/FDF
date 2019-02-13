@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/12 11:47:35 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/12 17:18:32 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ typedef struct	s_var_mlx
 {
 	void				*mlx_ptr;
 	void				*win_ptr;
+	void				*img_ptr;
+	int					bpp;
+	int					s_l;
+	int					endian;
+	unsigned char		*img;
 	t_p					*p;
 	int					h;
 	float				pl;
@@ -97,5 +102,7 @@ t_coord			pa(t_p *stru, t_mv m);
 int				xi(t_p *stru, t_mv m);
 int				yi(t_p *stru, t_mv m);
 t_coord			pai(t_p *stru, t_mv m);
+void			fill_pixel(uint8_t *str, int x, int y);
+void			linei(t_coord p1, t_coord p2, t_mv v);
 
 #endif

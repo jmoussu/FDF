@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 18:26:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/12 11:54:17 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/12 18:26:18 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,22 @@
 // 	}
 // }
 
+void	test(t_mv m)
+{
+	t_coord p1;
+	t_coord p2;
+	p1.x = 400;
+	p1.y = 400;
+	p2.x = 900;
+	p2.y = 1000;
+	linei(p1, p2, m);
+	mlx_put_image_to_window((void *)&m, m.win_ptr, m.img_ptr, 0, 0);
+}
+
 void	map(t_p* p, t_mv m)
 {
+	mlx_clear_window(m.mlx_ptr, m.win_ptr);
+
 	if (m.i == 0)
 	{
 		while (p != NULL)
@@ -38,11 +52,11 @@ void	map(t_p* p, t_mv m)
 			//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
 			if (p->link_h != NULL)
 			{
-				line(pa(p, m), pa(p->link_h, m), m);
+				linei(pa(p, m), pa(p->link_h, m), m);
 			}
 			if (p->link_v != NULL)
 			{
-				line(pa(p, m), pa(p->link_v, m), m);
+				linei(pa(p, m), pa(p->link_v, m), m);
 			}
 			p = p->next;
 		}
@@ -54,15 +68,17 @@ void	map(t_p* p, t_mv m)
 			//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
 			if (p->link_h != NULL)
 			{
-				line(pai(p, m), pai(p->link_h, m), m);
+				linei(pai(p, m), pai(p->link_h, m), m);
 			}
 			if (p->link_v != NULL)
 			{
-				line(pai(p, m), pai(p->link_v, m), m);
+				linei(pai(p, m), pai(p->link_v, m), m);
 			}
 			p = p->next;
 		}
 	}
+	mlx_put_image_to_window((void *)&m, m.win_ptr, m.img_ptr, 0, 0);
+	bzero(m.img, 1920*1080*4);
 }
 
 int	deal_key(int key, void *param)
@@ -149,7 +165,7 @@ int	deal_key(int key, void *param)
 		ft_putstr("bp");
 		mlx_clear_window(v->mlx_ptr, v->win_ptr);
 		if ((v->z) > 0.002)
-			v->z = v->z - 0.08;
+			v->z = v->z - 0.002;
 		map(v->p, *v);
 	}
 	ft_putnbr(key);
@@ -193,6 +209,11 @@ int	mlx_main(t_p *p)
 	v.p = p;
 	v.mlx_ptr = mlx_init();
 	v.win_ptr = mlx_new_window(v.mlx_ptr, 1920, 1080, "NOM DE LA FENETRE"); //960 540
+	v.img_ptr = mlx_new_image(v.mlx_ptr, 1920, 1080);
+	if(!(v.img = (unsigned char*)malloc((sizeof(char) * 1920*1080*4)))) // a free
+		return (error());
+	v.img =  (unsigned char*)mlx_get_data_addr(v.img_ptr, &(v.bpp), &(v.s_l), &(v.endian));
+	v.img[1920*1080*4] = '\0';
 	v.bx = 10;
 	v.by = 10;
 	v.h = 5; // hauteur
@@ -202,6 +223,7 @@ int	mlx_main(t_p *p)
 	start = v;
 	v.start = &start;
 	map(v.p, v);
+	// test(v);
 	mlx_key_hook(v.win_ptr, deal_key, (void *)&v);
 	mlx_mouse_hook(v.win_ptr, deal_mouse, (void *)&v);
 	mlx_loop(v.mlx_ptr);
