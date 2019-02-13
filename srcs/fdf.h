@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:53 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/12 17:18:32 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/13 19:00:30 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_var_mlx
 	int					by;
 	int					i;
 	float				z;
+	float				zf;
 	struct s_var_mlx	*start;
 	// int				zy1;
 	// int				zx2;

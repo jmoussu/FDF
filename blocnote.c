@@ -6,15 +6,14 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:12:58 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/08 17:45:01 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/13 19:28:21 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
-// loop hook
-// iamge
-// les- dans valide file
+// loop hook ?
+// Fin du main ce lance pas
 
 /*
 ** FICHIER PERSO DE DEBUG display_list.c read.c

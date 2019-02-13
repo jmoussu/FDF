@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:55:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/11 18:37:40 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/13 19:35:14 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int		main(int argc, char **argv)
 		return (1);
 	// display_list(map);
 	mlx_main(map);
+	ft_putstr("FIN FIN FIN FIN");
 	freelist(map); // INUTILE LEAKS POURQUOI ? (avant d'use mlx aussi)
-	// while (1); //Leaks Usage
+	exit(0);
+	while (1); //Leaks Usage
 	return (0);
 }
