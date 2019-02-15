@@ -20,13 +20,13 @@ Une fois compilé, il suffit de l'executer en lancant:
 ```
 Pour utiliser le logiciel les touches sont:
 ```
-Zoom              ==              Mlette souris
-Move              ==              Fèches directionnelles
-I                 ==              Change de vue (Iso ou face)
-M                 ==              Clear la fenetre
-+ -               ==              Change le Hauteur de la map
-Esc               ==              Stoppe le programe
-Tracer des lignes ==              Souris 1 puis Souris 2 (Trace une ligne entre les 2 points cliquer avec les 2 boutons de souris)  
+Zoom              	==      Molette souris
+Move              	==      Fèches directionnelles
+I                 	==      Change de vue (Iso ou face)
+M                 	==      Clear la fenetre
++ -               	==      Change le Hauteur de la map
+Esc               	==      Stoppe le programe
+Tracer des lignes 	==      Souris 1 puis Souris 2 (Trace une ligne entre les 2 points cliquer avec les 2 boutons de souris)  
 ```
 
 # Récuperer le sujet
