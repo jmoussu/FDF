@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 18:26:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/15 16:28:38 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/15 17:53:20 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	map(t_p *p, t_mv m)
 		}
 	}
 	mlx_put_image_to_window((void *)&m, m.win_ptr, m.img_ptr, 0, 0);
-	bzero(m.img, 8294400);
+	ft_bzero(m.img, 8294400);
 }
 
 int		mlx_main(t_p *p)

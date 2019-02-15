@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 19:00:06 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/04 18:30:35 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/15 18:34:32 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int		open_close_12(int option, int *fd, char *argv)
 {
 	if (option == 1)
 	{
+		if (open(argv, O_DIRECTORY) != -1)
+		{
+			ft_putstr("File error\n");
+			exit(0);
+			return (0);
+		}
 		*fd = open(argv, O_RDONLY);
 		if (*fd == -1)
 		{
