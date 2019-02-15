@@ -6,211 +6,59 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 18:26:11 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/02/14 17:45:09 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/02/15 16:28:38 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	*ft_leak_mdr(void)
-{
-	static void *lol = NULL;
-
-	if (!lol)
-		lol = (unsigned char*)malloc((sizeof(unsigned char) * 1920*1080*4));
-	return lol;
-}
-
-void	map(t_p* p, t_mv m)
+void	map(t_p *p, t_mv m)
 {
 	mlx_clear_window(m.mlx_ptr, m.win_ptr);
-
 	if (m.i == 0)
 	{
 		while (p != NULL)
 		{
-			//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
 			if (p->link_h != NULL)
-			{
 				linei(pa(p, m), pa(p->link_h, m), m);
-			}
 			if (p->link_v != NULL)
-			{
 				linei(pa(p, m), pa(p->link_v, m), m);
-			}
 			p = p->next;
 		}
 	}
-	else 
+	else
 	{
 		while (p != NULL)
 		{
-			//mlx_pixel_put(m.mlx_ptr, m.win_ptr, x(p), y(p, m), WHITE);
 			if (p->link_h != NULL)
-			{
 				linei(pai(p, m), pai(p->link_h, m), m);
-			}
 			if (p->link_v != NULL)
-			{
 				linei(pai(p, m), pai(p->link_v, m), m);
-			}
 			p = p->next;
 		}
 	}
 	mlx_put_image_to_window((void *)&m, m.win_ptr, m.img_ptr, 0, 0);
-	bzero(m.img, 1920*1080*4);
+	bzero(m.img, 8294400);
 }
 
-int	deal_key(int key, void *param)
-{
-	t_mv	*v;
-	v = (t_mv *)param;
-	if (key == 53) //ESC
-	{
-		//mlx_destroy_image(v->mlx_ptr, v->img_ptr);
-		free(ft_leak_mdr());
-		v->img = NULL;
-		while (1)
-		{
-			ft_putstr(".");
-			usleep(7000000);
-		}
-		exit(0);
-	}
-	if (key == 49) //Space
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-	if (key == 41) // M
-	{
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		ft_putchar('M');
-		// *v = *v->start; faire fonction mieux spécifique v->start n'a pas de suite segfault c'est pas une liste chainer
-		v->bx = v->start->bx;
-		v->by = v->start->by;
-		v->h = v->start->h;
-		v->z = v->start->z;
-		map(v->p, *v);
-	}
-	if (key == 34) // I
-	{
-		ft_putstr("ISO");
-		if (v->i == 1)
-			v->i = 0;
-		else
-			v->i = 1;
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		map(v->p, *v);
-	}
-	if (key == 69) // +
-	{
-		ft_putstr("+");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->h = v->h + 1;
-		map(v->p, *v);
-	}
-	if (key == 78) // -
-	{
-		ft_putstr("-");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->h = v->h - 1;
-		map(v->p, *v);
-	}
-	if (key == 124) // ->
-	{
-		ft_putstr("->");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->bx = v->bx + 300;
-		map(v->p, *v);
-	}
-		if (key == 123) // <-
-	{
-		ft_putstr("<-");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->bx = v->bx - 300;
-		map(v->p, *v);
-	}
-		if (key == 126) // haut
-	{
-		ft_putstr("^\n|\n");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->by = v->by - 300;
-		map(v->p, *v);
-	}
-	if (key == 125) // bas
-	{
-		ft_putstr("|\nv\n");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		v->by = v->by + 300;
-		map(v->p, *v);
-	}
-	ft_putnbr(key);
-	ft_putchar('\n');
-	return (0);
-}
-
-int	deal_mouse(int key, int x, int y, void *param)
-{
-	static t_coord		p1;
-	static t_coord		p2;
-
-	t_mv	*v;
-	v = (t_mv *)param;
-	ft_putnbr(key);
-	ft_putchar('\t');
-	ft_putnbr(x);
-	ft_putchar('\t');
-	ft_putnbr(y);
-	ft_putchar('\n');
-	if (key == 1)
-	{
-		p1.x = x;
-		p1.y = y;
-	}
-	if (key == 2)
-	{
-		p2.x = x;
-		p2.y = y;
-		line(p1, p2, *v);
-	}
-	if (key == 4) 
-	{
-		ft_putstr("Molette up\n");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		if ((v->z) < 10)
-			v->z = v->z * v->zf;
-		// if ((v->z) >= 1)
-		// 	v->z = v->z + 1;
-		map(v->p, *v);
-	}
-		if (key == 5) 
-	{
-		ft_putstr("Molette down\n");
-		mlx_clear_window(v->mlx_ptr, v->win_ptr);
-		if ((v->z) > 0.005)
-			v->z = v->z / v->zf;
-		map(v->p, *v);
-	}
-	return (0);
-}
-
-
-int	mlx_main(t_p *p)
+int		mlx_main(t_p *p)
 {
 	static t_mv	v;
-	static t_mv 	start;
+	static t_mv	start;
+
 	v.p = p;
 	v.mlx_ptr = mlx_init();
-	v.win_ptr = mlx_new_window(v.mlx_ptr, 1920, 1080, "NOM DE LA FENETRE"); //960 540
+	v.win_ptr = mlx_new_window(v.mlx_ptr, 1920, 1080, "NOM DE LA FENETRE");
 	v.img_ptr = mlx_new_image(v.mlx_ptr, 1920, 1080);
-	if(!(v.img = ft_leak_mdr())) // a free
+	if (!(v.imgs = (unsigned char*)malloc((sizeof(unsigned char) * 8294400))))
 		return (error());
-	v.img = (unsigned char*)mlx_get_data_addr(v.img_ptr, &(v.bpp), &(v.s_l), &(v.endian));
-	v.img[1920*1080*4] = '\0';
+	v.img = v.imgs;
+	v.img = (uint8_t *)mlx_get_data_addr(v.img_ptr, &(v.bpp), &(v.s_l), &(v.e));
 	v.bx = 10;
 	v.by = 10;
-	v.h = 5; // hauteur
-	v.pl = 1.35; // plat
+	v.h = 5;
+	v.pl = 1.35;
 	v.z = 1;
-	v.zf = 1.1;
 	v.i = 1;
 	start = v;
 	v.start = &start;
@@ -218,6 +66,6 @@ int	mlx_main(t_p *p)
 	mlx_key_hook(v.win_ptr, deal_key, (void *)&v);
 	mlx_mouse_hook(v.win_ptr, deal_mouse, (void *)&v);
 	mlx_loop(v.mlx_ptr);
-	free(v.img);
+	free(v.imgs);
 	return (0);
 }

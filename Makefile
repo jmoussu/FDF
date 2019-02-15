@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:54:54 by jmoussu           #+#    #+#              #
-#    Updated: 2019/02/12 17:02:37 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/02/15 15:43:04 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,18 @@ NAME = fdf
 SRC =	srcs/main.c \
 		srcs/ligne.c \
 		srcs/utils.c \
-		srcs/read.c \
 		srcs/valid_file.c \
+		srcs/valid_bn.c \
 		srcs/parsing.c \
-		srcs/display_list.c \
 		srcs/make_link.c \
 		srcs/freelist.c \
 		srcs/mlx_main.c \
 		srcs/maths.c \
 		srcs/maths_iso.c \
 		srcs/img.c \
-		srcs/ligne_img.c
+		srcs/ligne_img.c \
+		srcs/deal_key.c \
+		srcs/deal_mouse.c
 
 OBJ = $(SRC:.c=.o)
 
