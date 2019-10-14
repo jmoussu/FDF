@@ -6,7 +6,6 @@ Projet graphique: modélisation de terrain en fil de fer
 
 
 ![Screen Shot 2019-10-15 at 12 33 01 AM](https://user-images.githubusercontent.com/44972661/66787440-02e49600-eee4-11e9-9740-519304183d71.png)
-![Screen Shot 2019-10-15 at 12 40 00 AM](https://user-images.githubusercontent.com/44972661/66787539-61aa0f80-eee4-11e9-8542-dfee77eb2e04.png)
 
 # Comment le compiler ?
 
