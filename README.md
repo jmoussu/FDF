@@ -20,7 +20,7 @@ Cela va lancer également la compilation du deuxieme Makefile, dans le dossier l
 
 # Comment l'utiliser ?
 
-Une fois compilé, il suffit de l'executer en lancant:
+Une fois compilé, il suffit de l'exécuter en lançant:
 ```
 ./fdf maps/france
 ```
@@ -30,10 +30,10 @@ azerty keyboard:
 Zoom           	==      Molette souris
 Move           	==      Fèches directionnelles
 I              	==      Change de vue (Iso ou Face)
-Space          	==      Clear la fenetre
+Space          	==      Clear la fenêtre
 M              	==      Valeurs par défauts
 + -            	==      Change le Hauteur de la map
-Esc            	==      Stoppe le programe
+Esc            	==      Stoppe le programme
 Tracer lignes 	==      Souris 1 puis Souris 2 (Trace une ligne entre les 2 points cliquer avec les 2 boutons de souris)
 ```
 
@@ -41,4 +41,4 @@ Tracer lignes 	==      Souris 1 puis Souris 2 (Trace une ligne entre les 2 point
 
 Pour récuperer le sujet, il suffit de télécharger le repo, le sujet se nomme fdf.fr.pdf
 
-⚠️ Le sujet est tel qu'il était quand ce projet à été validé, il est suceptible d'évoluer avec le temps ⚠️
+⚠️ Le sujet est tel qu'il était quand ce projet à été validé, il est susceptible d'évoluer avec le temps ⚠️
