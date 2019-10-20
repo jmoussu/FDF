@@ -37,7 +37,7 @@ Esc            	==      Stoppe le programme
 Tracer lignes 	==      Souris 1 puis Souris 2 (Trace une ligne entre les 2 points cliquer avec les 2 boutons de souris)
 ```
 
-# Récuperer le sujet
+# Récupérer le sujet
 
 Pour récuperer le sujet, il suffit de télécharger le repo, le sujet se nomme fdf.fr.pdf
 
