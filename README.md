@@ -39,6 +39,6 @@ Tracer lignes 	==      Souris 1 puis Souris 2 (Trace une ligne entre les 2 point
 
 # Récupérer le sujet
 
-Pour récuperer le sujet, il suffit de télécharger le repo, le sujet se nomme fdf.fr.pdf
+Pour récupérer le sujet, il suffit de télécharger le repo, le sujet se nomme fdf.fr.pdf
 
 ⚠️ Le sujet est tel qu'il était quand ce projet à été validé, il est susceptible d'évoluer avec le temps ⚠️
